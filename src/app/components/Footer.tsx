@@ -23,10 +23,10 @@ export function Footer() {
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/innovative-paradigm', label: 'LinkedIn' },
 
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61574370458801', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/innovativeparadigmip/', label: 'Instagram' },
   ];
 
   return (
