@@ -149,10 +149,28 @@ export function ContactSection() {
             </div>
 
             {/* Additional Info */}
-          
-             
-              
-          
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="bg-gradient-to-br from-gray-900 to-black border border-[#FF6A00]/30 rounded-xl p-6"
+            >
+              <h4 className="text-white font-semibold mb-3">Business Hours</h4>
+              <div className="space-y-2 text-gray-400">
+                <div className="flex justify-between">
+                  <span>Monday - Friday:</span>
+                  <span className="text-white">9:00 AM - 5:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Saturday:</span>
+                  <span className="text-white">Closed</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Sunday:</span>
+                  <span className="text-white">Closed</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form */}

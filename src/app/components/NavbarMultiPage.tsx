@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router';
 import { Button } from './ui/button';
 
-export function Navbar() {
+export function NavbarMultiPage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,29 +17,26 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
 
   const navLinks = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About', id: 'about' },
-    { label: 'Services', id: 'services-overview' },
-    { label: 'Lecturio', id: 'lecturio' },
-    { label: 'KSA Formation', id: 'ksa-formation' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Services', path: '/services' },
+    { label: 'Lecturio', path: '/lecturio' },
+    { label: 'KSA Formation', path: '/ksa-formation' },
+    { label: 'Contact', path: '/contact' },
   ];
+
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <motion.nav
@@ -50,7 +49,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-            <motion.div
+           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -71,29 +70,39 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
-              <motion.button
-                key={link.id}
+              <motion.div
+                key={link.path}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
-                onClick={() => scrollToSection(link.id)}
-                className="text-gray-300 hover:text-[#FF6A00] transition-colors duration-300 relative group"
               >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6A00] group-hover:w-full transition-all duration-300"></span>
-              </motion.button>
+                <Link
+                  to={link.path}
+                  className={`transition-colors duration-300 relative group ${
+                    isActive(link.path)
+                      ? 'text-[#FF6A00]'
+                      : 'text-gray-300 hover:text-[#FF6A00]'
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#FF6A00] transition-all duration-300 ${
+                      isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  ></span>
+                </Link>
+              </motion.div>
             ))}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <Button
-                onClick={() => scrollToSection('contact')}
-                className="bg-[#FF6A00] hover:bg-[#FF8C00] text-white"
-              >
-                Get Started
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-[#FF6A00] hover:bg-[#FF8C00] text-white">
+                  Get Started
+                </Button>
+              </Link>
             </motion.div>
           </div>
 
@@ -118,20 +127,23 @@ export function Navbar() {
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left text-gray-300 hover:text-[#FF6A00] py-2 transition-colors duration-300"
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`block w-full text-left py-2 transition-colors duration-300 ${
+                    isActive(link.path)
+                      ? 'text-[#FF6A00]'
+                      : 'text-gray-300 hover:text-[#FF6A00]'
+                  }`}
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
-              <Button
-                onClick={() => scrollToSection('contact')}
-                className="w-full bg-[#FF6A00] hover:bg-[#FF8C00] text-white"
-              >
-                Get Started
-              </Button>
+              <Link to="/contact" className="block w-full">
+                <Button className="w-full bg-[#FF6A00] hover:bg-[#FF8C00] text-white">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}

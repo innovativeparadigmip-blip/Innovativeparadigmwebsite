@@ -1,5 +1,6 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from 'motion/react';
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router';
 import { TrendingUp, Layers, Globe2, HeadphonesIcon } from 'lucide-react';
 
 function AnimatedCounter({ value, duration = 2 }: { value: number; duration?: number }) {
@@ -30,29 +31,29 @@ export function BenefitsSection() {
   const benefits = [
     {
       icon: TrendingUp,
-      title: 'Global Standard Education',
-      description: 'Access to internationally recognized medical education content that meets the highest academic standards.',
-      stats: { value: 98, label: 'Content Quality Score' },
+      title: 'Global Excellence',
+      description: 'Access to internationally recognized solutions, from medical education platforms to business formation services.',
+      stats: { value: 98, label: 'Quality Score' },
       color: 'from-[#FF6A00] to-orange-500',
     },
     {
       icon: Layers,
-      title: 'Scalable Licensing',
-      description: 'Flexible licensing models that grow with your institution, from small cohorts to entire universities.',
-      stats: { value: 500, label: 'Institutions Served' },
+      title: 'Scalable Solutions',
+      description: 'Flexible service models that grow with your needs, from institutional licensing to company formation.',
+      stats: { value: 500, label: 'Clients Served' },
       color: 'from-orange-500 to-red-500',
     },
     {
       icon: Globe2,
-      title: 'Institutional Growth',
-      description: 'Empower your institution with tools that enhance student outcomes and improve institutional rankings.',
-      stats: { value: 95, label: 'Student Success Rate' },
+      title: 'Strategic Growth',
+      description: 'Empower your organization with tools and services that drive success in education and business expansion.',
+      stats: { value: 95, label: 'Success Rate' },
       color: 'from-orange-600 to-[#FF6A00]',
     },
     {
       icon: HeadphonesIcon,
       title: 'Dedicated Support',
-      description: 'Round-the-clock technical and academic support to ensure seamless integration and optimal usage.',
+      description: 'Round-the-clock support across all our service lines to ensure seamless integration and optimal outcomes.',
       stats: { value: 24, label: 'Hours Support' },
       color: 'from-red-500 to-orange-600',
     },
@@ -87,8 +88,8 @@ export function BenefitsSection() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#FF6A00] to-orange-500 mx-auto mb-6"></div>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Partnering with Innovative Paradigm opens doors to world-class medical education 
-            resources and transformative institutional growth.
+            Partnering with Innovative Paradigm opens doors to world-class solutions,
+            whether it's medical education or business expansion opportunities.
           </p>
         </motion.div>
 
@@ -171,27 +172,20 @@ export function BenefitsSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#FF6A00]/20 via-orange-500/20 to-[#FF6A00]/20 rounded-2xl blur-2xl"></div>
           <div className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 border border-[#FF6A00]/30 rounded-2xl p-12 text-center">
             <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Transform Your Institution?
+              Ready to Transform Your Organization?
             </h3>
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              Join the global network of institutions delivering excellence in medical education
+              Join the global network of clients achieving excellence through our comprehensive solutions
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) {
-                  const offset = 80;
-                  const elementPosition = element.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.scrollY - offset;
-                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
-              }}
-              className="bg-gradient-to-r from-[#FF6A00] to-orange-600 hover:from-[#FF8C00] hover:to-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg shadow-[#FF6A00]/30"
-            >
-              Start Your Partnership Today
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-[#FF6A00] to-orange-600 hover:from-[#FF8C00] hover:to-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg shadow-[#FF6A00]/30"
+              >
+                Start Your Partnership Today
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

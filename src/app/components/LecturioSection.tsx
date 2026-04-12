@@ -68,7 +68,11 @@ export function LecturioSection() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <span className="text-[#FF6A00] text-sm font-semibold tracking-wider uppercase mb-4 block">Our Platform</span>
+            <div className="inline-flex items-center gap-2 bg-[#FF6A00]/20 border border-[#FF6A00]/50 rounded-full px-4 py-2 mb-4">
+              <span className="text-[#FF6A00] text-xs font-bold">LICENSED PRODUCT</span>
+              <span className="text-gray-400 text-xs">•</span>
+              <span className="text-gray-300 text-xs">Offered by Innovative Paradigm</span>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Powered by{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6A00] to-orange-500">
@@ -77,7 +81,7 @@ export function LecturioSection() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#FF6A00] to-orange-500 mx-auto mb-6"></div>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Lecturio is a leading global medical education platform, providing comprehensive 
+              Lecturio is a leading global medical education platform, providing comprehensive
               digital learning resources trusted by medical students and professionals worldwide.
             </p>
           </motion.div>

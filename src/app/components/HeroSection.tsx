@@ -1,20 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Play } from 'lucide-react';
+import { Link } from 'react-router';
 import { Button } from './ui/button';
 
 export function HeroSection() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
@@ -69,7 +58,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 bg-[#FF6A00]/10 border border-[#FF6A00]/30 rounded-full px-6 py-2 mb-8"
           >
             <div className="w-2 h-2 bg-[#FF6A00] rounded-full animate-pulse"></div>
-            <span className="text-[#FF6A00] text-sm">Empowering Healthcare Education</span>
+            <span className="text-[#FF6A00] text-sm">Your Partner in Growth & Education</span>
           </motion.div>
 
           <motion.h1
@@ -78,9 +67,9 @@ export function HeroSection() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Transforming Medical<br />
+            Innovative Paradigm<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6A00] to-orange-500">
-              Education Access
+              Empowering Success
             </span>{' '}
             Globally
           </motion.h1>
@@ -91,8 +80,8 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-xl text-white mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            As Lecturio's premier licensing and distribution partner in Pakistan, we connect healthcare institutions 
-            with world-class digital learning resources, ensuring uninterrupted education even during lockdowns and uncertain times.
+            A multi-service enterprise providing premium medical education licensing through Lecturio and comprehensive
+            company formation services in Saudi Arabia. Your trusted partner for institutional excellence and business growth.
           </motion.p>
 
           <motion.div
@@ -101,14 +90,13 @@ export function HeroSection() {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="bg-[#FF6A00] hover:bg-[#FF8C00] text-white px-8 py-6 text-lg group"
-            >
-              Request a Demo
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-           
+            <Link to="/contact">
+              <Button className="bg-[#FF6A00] hover:bg-[#FF8C00] text-white px-8 py-6 text-lg group">
+                Request a Demo
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          
           </motion.div>
 
           {/* Stats */}
@@ -119,8 +107,8 @@ export function HeroSection() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
           >
             {[
-              { value: '500K+', label: 'Medical Students' },
-              { value: '1,000+', label: 'Institutions' },
+              { value: '1,000+', label: 'Global Clients' },
+              { value: '500K+', label: 'Users Served' },
               { value: '95%', label: 'Success Rate' },
               { value: '24/7', label: 'Support' },
             ].map((stat, index) => (
@@ -153,7 +141,7 @@ export function HeroSection() {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2 text-gray-400 cursor-pointer"
-          onClick={() => scrollToSection('about')}
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
         >
           <span className="text-sm">Scroll Down</span>
           <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2">

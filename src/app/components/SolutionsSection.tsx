@@ -1,5 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import { useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import { GraduationCap, Building2, Hospital, Users2, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 
@@ -19,6 +20,7 @@ interface SolutionDetails {
 
 export function SolutionsSection() {
   const ref = useRef(null);
+  const navigate = useNavigate();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedSolution, setSelectedSolution] = useState<SolutionDetails | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,7 +63,7 @@ export function SolutionsSection() {
       icon: Building2,
       title: 'Universities',
       description: 'Enterprise-grade solutions for universities with multiple departments, offering scalable licensing for healthcare programs.',
-      features: ['Multi-department access', 'Centralized management', 'Volume licensing', 'Dedicated support'],
+         features: ['Multi-department access', 'Centralized management', 'Volume licensing', 'Dedicated support'],
       image: '/uni.png',
       detailedInfo: {
         overview: 'University-wide licensing provides comprehensive coverage for all medical and healthcare-related departments. Our enterprise solution offers centralized management, volume discounts, and dedicated support for large-scale implementations across multiple faculties.',
@@ -361,13 +363,7 @@ export function SolutionsSection() {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => {
                       setIsModalOpen(false);
-                      const element = document.getElementById('contact');
-                      if (element) {
-                        const offset = 80;
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.scrollY - offset;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                      }
+                      navigate('/contact');
                     }}
                     className="w-full bg-gradient-to-r from-[#FF6A00] to-orange-600 hover:from-[#FF8C00] hover:to-orange-700 text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
                   >

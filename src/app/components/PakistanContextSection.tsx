@@ -80,7 +80,7 @@ export function PakistanContextSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-[#FF6A00] text-sm font-semibold tracking-wider uppercase mb-4 block"></span>
+          <span className="text-[#FF6A00] text-sm font-semibold tracking-wider uppercase mb-4 block">Pakistan Context</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ensuring Education Continuity in{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 via-white to-green-500">

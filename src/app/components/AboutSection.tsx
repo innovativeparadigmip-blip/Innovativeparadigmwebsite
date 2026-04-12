@@ -83,19 +83,18 @@ export function AboutSection() {
             className="space-y-6"
           >
             <h3 className="text-3xl font-bold text-white">
-              Leading Licensing Partner for{' '}
-              <span className="text-[#FF6A00]">Lecturio</span>
+              Multi-Service{' '}
+              <span className="text-[#FF6A00]">Enterprise Solutions</span>
             </h3>
             <p className="text-gray-400 leading-relaxed text-lg">
-              Innovative Paradigm stands at the forefront of medical education transformation. 
-              As the exclusive licensing and distribution partner for Lecturio, we serve as the 
-              vital link between world-class digital learning platforms and healthcare institutions.
+              Innovative Paradigm is a forward-thinking enterprise delivering premium services across two key domains:
+              medical education technology and business formation solutions. We bridge the gap between global
+              opportunities and institutional excellence.
             </p>
             <p className="text-gray-400 leading-relaxed text-lg">
-              We work with medical colleges, universities, hospitals, and training institutes 
-              globally, providing them with seamless access to Lecturio's comprehensive medical 
-              education resources. Our expertise lies in understanding institutional needs and 
-              delivering customized licensing solutions that drive educational excellence.
+              From providing healthcare institutions with access to world-class digital learning platforms to
+              facilitating seamless company formation in Saudi Arabia, our expertise spans diverse sectors.
+              We pride ourselves on delivering tailored solutions that drive success and growth.
             </p>
             <div className="pt-4">
               <div className="flex items-center gap-4">
@@ -103,8 +102,8 @@ export function AboutSection() {
                   <Award className="text-white" size={32} />
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-lg">Trusted by Leading Institutions</div>
-                  <div className="text-gray-400">Serving healthcare education worldwide</div>
+                  <div className="text-white font-semibold text-lg">Trusted Global Partner</div>
+                  <div className="text-gray-400">Serving education & business worldwide</div>
                 </div>
               </div>
             </div>

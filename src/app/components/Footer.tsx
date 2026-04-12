@@ -1,44 +1,34 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
 export function Footer() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const footerLinks = {
     company: [
-      { label: 'About Us', action: () => scrollToSection('about') },
-      { label: 'Our Mission', action: () => scrollToSection('about') },
-      { label: 'Contact', action: () => scrollToSection('contact') },
+      { label: 'About Us', path: '/about' },
+      { label: 'Our Services', path: '/services' },
+      { label: 'Contact', path: '/contact' },
     ],
-    solutions: [
-      { label: 'Medical Colleges', action: () => scrollToSection('solutions') },
-      { label: 'Universities', action: () => scrollToSection('solutions') },
-      { label: 'Hospitals', action: () => scrollToSection('solutions') },
-      { label: 'Training Institutes', action: () => scrollToSection('solutions') },
+    services: [
+      { label: 'Lecturio Education', path: '/lecturio' },
+      { label: 'KSA Company Formation', path: '/ksa-formation' },
+      { label: 'Medical Colleges', path: '/lecturio' },
+      { label: 'Business Setup', path: '/ksa-formation' },
     ],
     resources: [
-      { label: 'Lecturio Platform', action: () => scrollToSection('lecturio') },
-      { label: 'Benefits', action: () => scrollToSection('benefits') },
-      { label: 'How It Works', action: () => scrollToSection('process') },
+      { label: 'Benefits', path: '/about' },
+      { label: 'How It Works', path: '/services' },
+      { label: 'Testimonials', path: '/' },
     ],
   };
-const socialLinks = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-];
+
+  const socialLinks = [
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+
+    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Instagram, href: '#', label: 'Instagram' },
+  ];
+
   return (
     <footer className="bg-black border-t border-white/10 relative overflow-hidden">
       {/* Background Gradient */}
@@ -48,7 +38,7 @@ const socialLinks = [
         {/* Main Footer Content */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
+   <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -98,12 +88,12 @@ const socialLinks = [
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <button
-                    onClick={link.action}
+                  <Link
+                    to={link.path}
                     className="text-gray-400 hover:text-[#FF6A00] transition-colors text-sm"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -115,16 +105,16 @@ const socialLinks = [
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-white font-semibold mb-4">Solutions</h4>
+            <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
-              {footerLinks.solutions.map((link, index) => (
+              {footerLinks.services.map((link, index) => (
                 <li key={index}>
-                  <button
-                    onClick={link.action}
+                  <Link
+                    to={link.path}
                     className="text-gray-400 hover:text-[#FF6A00] transition-colors text-sm"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -140,12 +130,12 @@ const socialLinks = [
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
-                  <button
-                    onClick={link.action}
+                  <Link
+                    to={link.path}
                     className="text-gray-400 hover:text-[#FF6A00] transition-colors text-sm"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

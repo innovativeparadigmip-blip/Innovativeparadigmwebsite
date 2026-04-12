@@ -10,29 +10,29 @@ export function ProcessSection() {
     {
       icon: MessageSquare,
       title: 'Consultation',
-      description: 'We begin with a comprehensive consultation to understand your institution\'s unique needs, goals, and current infrastructure.',
-      details: ['Needs assessment', 'Goal setting', 'Infrastructure review', 'Budget planning'],
+      description: 'We begin with a comprehensive consultation to understand your unique needs, goals, and requirements.',
+      details: ['Needs assessment', 'Goal setting', 'Requirement analysis', 'Budget planning'],
       color: 'from-[#FF6A00] to-orange-500',
     },
     {
       icon: Settings,
-      title: 'Licensing Customization',
-      description: 'Our team crafts a tailored licensing package that aligns perfectly with your requirements and budget constraints.',
-      details: ['Custom package design', 'Pricing structure', 'Access levels', 'Feature selection'],
+      title: 'Solution Customization',
+      description: 'Our team crafts a tailored service package that aligns perfectly with your requirements and objectives.',
+      details: ['Custom package design', 'Pricing structure', 'Service levels', 'Timeline planning'],
       color: 'from-orange-500 to-red-500',
     },
     {
       icon: Workflow,
-      title: 'Integration',
-      description: 'Seamless integration of Lecturio\'s platform into your existing systems with comprehensive training for administrators and users.',
-      details: ['Platform setup', 'System integration', 'User training', 'Content deployment'],
+      title: 'Implementation',
+      description: 'Seamless implementation and deployment with comprehensive support and guidance throughout the process.',
+      details: ['Service setup', 'Documentation', 'Training & onboarding', 'Quality assurance'],
       color: 'from-orange-600 to-[#FF6A00]',
     },
     {
       icon: Headphones,
       title: 'Ongoing Support',
-      description: 'Continuous technical and academic support to ensure optimal utilization and address any queries or challenges promptly.',
-      details: ['24/7 technical support', 'Regular updates', 'Performance monitoring', 'Optimization guidance'],
+      description: 'Continuous support to ensure optimal results and address any queries or challenges promptly.',
+      details: ['24/7 support', 'Regular updates', 'Performance monitoring', 'Optimization guidance'],
       color: 'from-red-500 to-orange-600',
     },
   ];
@@ -75,8 +75,8 @@ export function ProcessSection() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#FF6A00] to-orange-500 mx-auto mb-6"></div>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Our streamlined four-step process ensures a smooth transition to world-class 
-            medical education for your institution.
+            Our streamlined process ensures smooth delivery of our services, whether it's
+            medical education licensing or business formation in Saudi Arabia.
           </p>
         </motion.div>
 
@@ -163,8 +163,8 @@ export function ProcessSection() {
         >
           <div className="bg-gradient-to-r from-black via-gray-900 to-black border border-[#FF6A00]/30 rounded-2xl p-8">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">Average Implementation Timeline</h3>
-              <p className="text-gray-400">From consultation to full deployment</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Typical Service Timeline</h3>
+              <p className="text-gray-400">From initial consultation to successful delivery</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
