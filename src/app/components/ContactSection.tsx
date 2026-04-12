@@ -35,7 +35,7 @@ export function ContactSection() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'contact@innovativeparadigm.com',
+      value: 'admin@innovativeparadigm.com',
       link: 'mailto:contact@innovativeparadigm.com',
     },
     {
