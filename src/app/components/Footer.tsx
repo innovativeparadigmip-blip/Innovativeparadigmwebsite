@@ -71,7 +71,7 @@ export function Footer() {
                 </a>
                 <div className="flex items-center gap-3 text-gray-400">
                   <MapPin size={18} className="flex-shrink-0" />
-                  <span className="text-sm">House 231 E, Dream Garden, Defiance Road, Lahore</span>
+                  <span className="text-sm">House 231 E, Dream Garden, Defence Road, Lahore</span>
                 </div>
               </div>
             </motion.div>
