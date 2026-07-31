@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { CheckCircle, Send, ArrowLeft, Upload } from 'lucide-react';
+import { upload } from '@vercel/blob/client';
+import { CheckCircle, Send, ArrowLeft, Upload, AlertCircle } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 
@@ -126,8 +127,10 @@ function FormSection({ title, children }: { title: string; children: React.React
 
 export function MRWGRegistrationSection() {
   const [form, setForm] = useState<FormState>(emptyForm);
-  const [screenshotName, setScreenshotName] = useState('');
+  const [screenshotFile, setScreenshotFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -142,12 +145,37 @@ export function MRWGRegistrationSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Submission target not yet connected — logging the payload so it's ready to wire to a backend later.
-    console.log('MRWG registration submission:', { ...form, paymentScreenshot: screenshotName || null });
-    setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    try {
+      let paymentScreenshotUrl: string | null = null;
+      if (screenshotFile) {
+        const blob = await upload(`mrwg-receipts/${crypto.randomUUID()}-${screenshotFile.name}`, screenshotFile, {
+          access: 'public',
+          handleUploadUrl: '/api/mrwg-upload',
+        });
+        paymentScreenshotUrl = blob.url;
+      }
+
+      const res = await fetch('/api/mrwg-registrations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, paymentScreenshotUrl }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || 'Submission failed. Please try again.');
+      }
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Submission failed. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -330,14 +358,14 @@ export function MRWGRegistrationSection() {
                   className="flex items-center gap-3 cursor-pointer rounded-md border border-dashed border-white/20 bg-black/50 px-4 py-3 text-sm text-gray-400 hover:border-[#FF6A00]/50 transition-colors"
                 >
                   <Upload size={18} className="flex-shrink-0" />
-                  {screenshotName || 'Click to attach an image or PDF'}
+                  {screenshotFile?.name || 'Click to attach an image or PDF'}
                 </label>
                 <input
                   id="screenshot"
                   type="file"
                   accept="image/*,.pdf"
                   className="sr-only"
-                  onChange={(e) => setScreenshotName(e.target.files?.[0]?.name ?? '')}
+                  onChange={(e) => setScreenshotFile(e.target.files?.[0] ?? null)}
                 />
               </div>
             </div>
@@ -399,12 +427,20 @@ export function MRWGRegistrationSection() {
             </div>
           </FormSection>
 
+          {submitError && (
+            <div className="flex items-center gap-2 text-red-400 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3 text-sm">
+              <AlertCircle size={18} className="flex-shrink-0" />
+              {submitError}
+            </div>
+          )}
+
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-[#FF6A00] to-orange-600 hover:from-[#FF8C00] hover:to-orange-700 text-white py-4 rounded-lg text-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 group"
+            disabled={isSubmitting}
+            className="w-full bg-gradient-to-r from-[#FF6A00] to-orange-600 hover:from-[#FF8C00] hover:to-orange-700 disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-lg text-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 group"
           >
-            Submit Registration
-            <Send className="group-hover:translate-x-1 transition-transform" size={20} />
+            {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+            {!isSubmitting && <Send className="group-hover:translate-x-1 transition-transform" size={20} />}
           </button>
         </motion.form>
       </div>
