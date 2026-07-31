@@ -14,8 +14,11 @@ export function Footer() {
       { label: 'KSA Company Formation', path: '/ksa-formation' },
       { label: 'Medical Colleges', path: '/lecturio' },
       { label: 'Business Setup', path: '/ksa-formation' },
+<<<<<<< HEAD
       { label: 'Medical Research Writers Guild', path: '/mrwg' },
       { label: 'MRWG Registration', path: '/mrwg/register' },
+=======
+>>>>>>> 4f1aecad8e5c42a185b371afee2ebc0387bacdd7
     ],
     resources: [
       { label: 'Benefits', path: '/about' },
@@ -177,9 +180,15 @@ export function Footer() {
             >
               <p>© {new Date().getFullYear()} Innovative Paradigm. All rights reserved.</p>
               <p className="mt-1">
+<<<<<<< HEAD
                 <button className="hover:text-[#FF6A00] transition-colors"></button>
                 {' · '}
                 <button className="hover:text-[#FF6A00] transition-colors"></button>
+=======
+                <button className="hover:text-[#FF6A00] transition-colors">Privacy Policy</button>
+                {' · '}
+                <button className="hover:text-[#FF6A00] transition-colors">Terms of Service</button>
+>>>>>>> 4f1aecad8e5c42a185b371afee2ebc0387bacdd7
               </p>
             </motion.div>
           </div>

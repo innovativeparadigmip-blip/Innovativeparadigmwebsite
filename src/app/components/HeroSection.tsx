@@ -90,9 +90,15 @@ export function HeroSection() {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
+<<<<<<< HEAD
             <Link to="/mrwg">
               <Button className="bg-[#FF6A00] hover:bg-[#FF8C00] text-white px-8 py-6 text-lg group">
                 Medical Research Writers Guild
+=======
+            <Link to="/contact">
+              <Button className="bg-[#FF6A00] hover:bg-[#FF8C00] text-white px-8 py-6 text-lg group">
+                Request a Demo
+>>>>>>> 4f1aecad8e5c42a185b371afee2ebc0387bacdd7
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
