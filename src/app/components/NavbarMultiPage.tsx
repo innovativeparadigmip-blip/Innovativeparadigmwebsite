@@ -28,10 +28,7 @@ export function NavbarMultiPage() {
     { label: 'Services', path: '/services' },
     { label: 'Lecturio', path: '/lecturio' },
     { label: 'KSA Formation', path: '/ksa-formation' },
-<<<<<<< HEAD
     { label: 'MRWG', path: '/mrwg' },
-=======
->>>>>>> 4f1aecad8e5c42a185b371afee2ebc0387bacdd7
     { label: 'Contact', path: '/contact' },
   ];
 
